@@ -1,0 +1,147 @@
+//
+//  ReusableClock.swift
+//  Module_11
+//
+//  Created by Любовь Волкова on 19.08.2021.
+//
+
+import UIKit
+
+private enum TimeStep: CGFloat {
+    case hour = 12
+    case minSec = 60
+}
+
+private enum WidthHeight {
+    case width, height
+}
+
+@IBDesignable class ReusableClock: UIView {
+    private lazy var isSetuped = false
+    
+    private lazy var frameWidth: CGFloat = 0
+    private lazy var frameHeight: CGFloat = 0
+    
+    private let markers = (top: UIView(), right: UIView(), bottom: UIView(), left: UIView())
+    private let markerProps: (width: CGFloat, height: CGFloat, bgColor: UIColor) = (3, 10, .green)
+    
+    private let arrows = (hour: UIView(), minute: UIView(), second: UIView())
+    private let centerHolder = UIView()
+    
+    @IBInspectable public var hourArrowColor: UIColor = .yellow {
+        didSet { setBackgroundColor(color: hourArrowColor, views: arrows.hour) }
+    }
+    @IBInspectable public var minuteArrowColor: UIColor = .blue {
+        didSet { setBackgroundColor(color: minuteArrowColor, views: arrows.minute) }
+    }
+    @IBInspectable public var secondArrowColor: UIColor = .black {
+        didSet { setBackgroundColor(color: secondArrowColor, views: arrows.second) }
+    }
+    
+    @IBInspectable public var hourArrowWidth: CGFloat = 2 {
+        didSet { setHourArrowFrame() }
+    }
+    @IBInspectable public var hourArrowHeight: CGFloat = 30 {
+        didSet { setHourArrowFrame() }
+    }
+    
+    @IBInspectable public var minuteArrowWidth: CGFloat = 2 {
+        didSet { setMinuteArrowFrame() }
+    }
+    @IBInspectable public var minuteArrowHeight: CGFloat = 40 {
+        didSet { setMinuteArrowFrame() }
+    }
+    
+    @IBInspectable public var secondArrowWidth: CGFloat = 2 {
+        didSet { setSecondArrowFrame() }
+    }
+    @IBInspectable public var secondArrowHeight: CGFloat = 50 {
+        didSet { setSecondArrowFrame() }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if isSetuped { return }
+        isSetuped = true
+        
+        frameWidth = frame.size.width
+        frameHeight = frame.size.height
+        layer.cornerRadius = frameWidth / 2
+        
+        setMarkers()
+        setArrows()
+        addViews(superview: self, subviews: markers.top, markers.right, markers.bottom, markers.left)
+        setAnchorPoints(viewNeededAnchorPoints: arrows.hour, arrows.minute, arrows.second)
+        addViews(superview: self, subviews: arrows.hour, arrows.minute, arrows.second)
+        setZIndex()
+        setBackgroundColor(color: hourArrowColor, views: arrows.hour)
+        setBackgroundColor(color: minuteArrowColor, views: arrows.minute)
+        setBackgroundColor(color: secondArrowColor, views: arrows.second)
+        setCenterHolder()
+        addSubview(centerHolder)
+    }
+    
+    private func addViews(superview mainView: UIView, subviews views: UIView...) {
+        for view in views {
+            mainView.addSubview(view)
+        }
+    }
+    
+    private func setBackgroundColor(color: UIColor, views: UIView...) {
+        for view in views {
+            view.backgroundColor = color
+        }
+    }
+    
+    private func setMarkers() {
+        markers.top.frame = CGRect(x: frameWidth / 2 - markerProps.width, y: 0, width: markerProps.width, height: markerProps.height)
+        markers.right.frame = CGRect(x: frameWidth - markerProps.height, y: frameHeight / 2, width: markerProps.height, height: markerProps.width)
+        markers.bottom.frame = CGRect(x: frameHeight / 2 - markerProps.width, y: frameHeight - markerProps.height, width: markerProps.width, height: markerProps.height)
+        markers.left.frame = CGRect(x: 0, y: frameHeight / 2 - markerProps.width, width: markerProps.height, height: markerProps.width)
+        
+        self.setBackgroundColor(color: markerProps.bgColor, views: markers.top, markers.right, markers.bottom, markers.left)
+    }
+    
+    private func setZIndex() {
+        arrows.hour.layer.zPosition = 1
+        arrows.minute.layer.zPosition = 2
+        arrows.second.layer.zPosition = 3
+    }
+    
+    private func setAnchorPoints(viewNeededAnchorPoints views: UIView...) {
+        for view in views {
+            view.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+        }
+    }
+    
+    private func setArrows() {
+        setHourArrowFrame()
+        setMinuteArrowFrame()
+        setSecondArrowFrame()
+    }
+    
+    private func setHourArrowFrame() {
+        arrows.hour.frame = CGRect(x: frameWidth / 2 - hourArrowWidth, y: hourArrowHeight, width: hourArrowWidth, height: frameHeight / 2 - hourArrowHeight)
+    }
+    
+    private func setMinuteArrowFrame() {
+        arrows.minute.frame = CGRect(x: frameHeight / 2 - minuteArrowWidth, y: minuteArrowHeight, width: minuteArrowWidth, height: frameHeight / 2 - minuteArrowHeight)
+    }
+    
+    private func setSecondArrowFrame() {
+        arrows.second.frame = CGRect(x: frameWidth / 2 - secondArrowWidth, y: secondArrowHeight, width: secondArrowWidth, height: frameHeight / 2 - secondArrowHeight)
+    }
+    
+    private func setCenterHolder() {
+        centerHolder.backgroundColor = .darkGray
+        centerHolder.frame = CGRect(x: frameWidth / 2 - 5, y: frameHeight / 2 - 5, width: 10, height: 10)
+        centerHolder.layer.cornerRadius = 5
+        centerHolder.layer.zPosition = 4
+    }
+    
+    private func setTime(time: CGFloat, arrow: UIView, timeStep step: TimeStep) {
+        let angle = CGFloat.pi * 2 * (time / step.rawValue)
+        arrow.transform = CGAffineTransform(rotationAngle: angle)
+    }
+}
