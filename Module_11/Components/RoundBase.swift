@@ -11,8 +11,8 @@ import UIKit
 public class RoundBase: UIView {
     private lazy var isSetuped = false
     
-    private lazy var frameWidth: CGFloat = 0
-    private lazy var frameHeight: CGFloat = 0
+    public lazy var frameWidth: CGFloat = 0
+    public lazy var frameHeight: CGFloat = 0
     
     private let markers = (top: UIView(), right: UIView(), bottom: UIView(), left: UIView())
     @IBInspectable public var markerColor: UIColor = .red {
