@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522A3CCF26D3208E00E75C93 /* RoundBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A3CCE26D3208E00E75C93 /* RoundBase.swift */; };
+		522A3CD326D320FB00E75C93 /* Fast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A3CD226D320FB00E75C93 /* Fast.swift */; };
 		52A7A8BD26CE5EEF0094E0EE /* ReusableClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7A8BC26CE5EEF0094E0EE /* ReusableClock.swift */; };
 		52E7386F26C9ACE9002A4E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7386E26C9ACE9002A4E14 /* AppDelegate.swift */; };
 		52E7387126C9ACE9002A4E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7387026C9ACE9002A4E14 /* SceneDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		522A3CCE26D3208E00E75C93 /* RoundBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBase.swift; sourceTree = "<group>"; };
+		522A3CD226D320FB00E75C93 /* Fast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fast.swift; sourceTree = "<group>"; };
 		52A7A8BC26CE5EEF0094E0EE /* ReusableClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableClock.swift; sourceTree = "<group>"; };
 		52E7386B26C9ACE9002A4E14 /* Module_11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Module_11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E7386E26C9ACE9002A4E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		522A3CD126D320CF00E75C93 /* MyLibs */ = {
+			isa = PBXGroup;
+			children = (
+				522A3CD226D320FB00E75C93 /* Fast.swift */,
+			);
+			path = MyLibs;
+			sourceTree = "<group>";
+		};
 		52E7386226C9ACE9002A4E14 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +72,7 @@
 		52E7386D26C9ACE9002A4E14 /* Module_11 */ = {
 			isa = PBXGroup;
 			children = (
+				522A3CD126D320CF00E75C93 /* MyLibs */,
 				52E7388326C9ADCE002A4E14 /* Components */,
 				52E7386E26C9ACE9002A4E14 /* AppDelegate.swift */,
 				52E7387026C9ACE9002A4E14 /* SceneDelegate.swift */,
@@ -77,6 +90,7 @@
 			children = (
 				52E7388426C9AE2E002A4E14 /* Button.swift */,
 				52A7A8BC26CE5EEF0094E0EE /* ReusableClock.swift */,
+				522A3CCE26D3208E00E75C93 /* RoundBase.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -153,9 +167,11 @@
 			files = (
 				52E7387326C9ACE9002A4E14 /* ViewController.swift in Sources */,
 				52E7386F26C9ACE9002A4E14 /* AppDelegate.swift in Sources */,
+				522A3CD326D320FB00E75C93 /* Fast.swift in Sources */,
 				52A7A8BD26CE5EEF0094E0EE /* ReusableClock.swift in Sources */,
 				52E7387126C9ACE9002A4E14 /* SceneDelegate.swift in Sources */,
 				52E7388526C9AE2E002A4E14 /* Button.swift in Sources */,
+				522A3CCF26D3208E00E75C93 /* RoundBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

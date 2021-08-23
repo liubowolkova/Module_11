@@ -28,6 +28,9 @@ private enum WidthHeight {
     private let arrows = (hour: UIView(), minute: UIView(), second: UIView())
     private let centerHolder = UIView()
     
+    private var arrowHeight: CGFloat = 0
+    private var arrowExtraHeight: CGFloat = 0
+    
     @IBInspectable public var hourArrowColor: UIColor = .yellow {
         didSet { setBackgroundColor(color: hourArrowColor, views: arrows.hour) }
     }
@@ -38,25 +41,37 @@ private enum WidthHeight {
         didSet { setBackgroundColor(color: secondArrowColor, views: arrows.second) }
     }
     
-    @IBInspectable public var hourArrowWidth: CGFloat = 2 {
+    @IBInspectable public var hourArrowWidth: CGFloat = 8 {
         didSet { setHourArrowFrame() }
     }
-    @IBInspectable public var hourArrowHeight: CGFloat = 30 {
+    @IBInspectable public var hourArrowHeight: CGFloat = 40 {
         didSet { setHourArrowFrame() }
     }
     
-    @IBInspectable public var minuteArrowWidth: CGFloat = 2 {
+    @IBInspectable public var minuteArrowWidth: CGFloat = 6 {
         didSet { setMinuteArrowFrame() }
     }
-    @IBInspectable public var minuteArrowHeight: CGFloat = 40 {
+    @IBInspectable public var minuteArrowHeight: CGFloat = 60 {
         didSet { setMinuteArrowFrame() }
     }
     
     @IBInspectable public var secondArrowWidth: CGFloat = 2 {
         didSet { setSecondArrowFrame() }
     }
-    @IBInspectable public var secondArrowHeight: CGFloat = 50 {
+    @IBInspectable public var secondArrowHeight: CGFloat = 80 {
         didSet { setSecondArrowFrame() }
+    }
+    
+    @IBInspectable public var timeHour: CGFloat = 0 {
+        didSet {}
+    }
+    
+    @IBInspectable public var timeMinute: CGFloat = 0 {
+        didSet {}
+    }
+    
+    @IBInspectable public var timeSecond: CGFloat = 0 {
+        didSet {}
     }
     
     override func layoutSubviews() {
@@ -69,17 +84,24 @@ private enum WidthHeight {
         frameHeight = frame.size.height
         layer.cornerRadius = frameWidth / 2
         
+        arrowHeight = frameWidth / 2
+        
+        
         setMarkers()
         setArrows()
         addViews(superview: self, subviews: markers.top, markers.right, markers.bottom, markers.left)
         setAnchorPoints(viewNeededAnchorPoints: arrows.hour, arrows.minute, arrows.second)
         addViews(superview: self, subviews: arrows.hour, arrows.minute, arrows.second)
-        setZIndex()
+        //setZIndex()
         setBackgroundColor(color: hourArrowColor, views: arrows.hour)
         setBackgroundColor(color: minuteArrowColor, views: arrows.minute)
         setBackgroundColor(color: secondArrowColor, views: arrows.second)
         setCenterHolder()
         addSubview(centerHolder)
+        
+        setTime(time: timeHour, arrow: arrows.hour, timeStep: .hour)
+        setTime(time: timeMinute, arrow: arrows.minute, timeStep: .minSec)
+        setTime(time: timeSecond, arrow: arrows.second, timeStep: .minSec)
     }
     
     private func addViews(superview mainView: UIView, subviews views: UIView...) {
@@ -109,9 +131,13 @@ private enum WidthHeight {
         arrows.second.layer.zPosition = 3
     }
     
+    private func setExtraAnchor(view: UIView, height: CGFloat) {
+        
+    }
+    
     private func setAnchorPoints(viewNeededAnchorPoints views: UIView...) {
         for view in views {
-            view.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+            view.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
         }
     }
     
@@ -122,15 +148,15 @@ private enum WidthHeight {
     }
     
     private func setHourArrowFrame() {
-        arrows.hour.frame = CGRect(x: frameWidth / 2 - hourArrowWidth, y: hourArrowHeight, width: hourArrowWidth, height: frameHeight / 2 - hourArrowHeight)
+        arrows.hour.frame = CGRect(x: frameWidth / 2 - hourArrowWidth, y: 0.5, width: hourArrowWidth, height: hourArrowHeight)
     }
     
     private func setMinuteArrowFrame() {
-        arrows.minute.frame = CGRect(x: frameHeight / 2 - minuteArrowWidth, y: minuteArrowHeight, width: minuteArrowWidth, height: frameHeight / 2 - minuteArrowHeight)
+        arrows.minute.frame = CGRect(x: frameHeight / 2 - minuteArrowWidth, y: minuteArrowHeight, width: minuteArrowWidth, height: minuteArrowHeight)
     }
     
     private func setSecondArrowFrame() {
-        arrows.second.frame = CGRect(x: frameWidth / 2 - secondArrowWidth, y: secondArrowHeight, width: secondArrowWidth, height: frameHeight / 2 - secondArrowHeight)
+        arrows.second.frame = CGRect(x: frameWidth / 2 - secondArrowWidth, y: secondArrowHeight, width: secondArrowWidth, height: secondArrowHeight)
     }
     
     private func setCenterHolder() {
