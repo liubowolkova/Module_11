@@ -27,11 +27,29 @@ public class Segmented: UIView {
     // Побывала ли подложка под обоими сегментами
     private var isFullPath = false
     
-    @IBInspectable public var borderColor = UIColor.red.cgColor {
-        didSet { self.layer.borderColor = borderColor }
+    // Параметр не отображается в Interface Builder
+    @IBInspectable public var selfViewBorderColor = UIColor.red.cgColor {
+        didSet { self.layer.borderColor = selfViewBorderColor }
     }
-    
-    
+    // Параметр не отображается в Interface Builder
+    @IBInspectable public var segmentOneText = "One" {
+        didSet { labels.first.text = segmentOneText }
+    }
+    // Параметр не отображается в Interface Builder
+    @IBInspectable public var segmenterTwoText = "Two" {
+        didSet { labels.second.text = segmenterTwoText }
+    }
+    // Параметр не отображается в Interface Builder
+    @IBInspectable public var segmentsBorderColor = UIColor.gray.cgColor {
+        didSet {
+            segments.first.layer.borderColor = segmentsBorderColor
+            segments.second.layer.borderColor = segmentsBorderColor
+        }
+    }
+    // Параметр не отображается в Interface Builder
+    @IBInspectable public var segmentBackBgColor = UIColor.cyan {
+        didSet { segmentBack.backgroundColor = segmentBackBgColor }
+    }
     
     private let labels: (first: UILabel, second: UILabel) = {
         let labels = [UILabel(), UILabel()]
@@ -82,7 +100,7 @@ public class Segmented: UIView {
         Fast.addViews(superview: self, subviews: segments.first, segments.second, segmentBack)
         
         layer.borderWidth = 2
-        layer.borderColor = borderColor
+        layer.borderColor = selfViewBorderColor
         
         // Центрируем лейблы внутри сегментов
         setCenterYAnchor(view1: labels.first, view2: segments.first)
