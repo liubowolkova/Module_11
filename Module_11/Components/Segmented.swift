@@ -7,6 +7,15 @@
 
 import UIKit
 
+public enum CurrentSegment: String {
+    case first = "First Segment"
+    case second = "Second Segment"
+}
+
+protocol SegmentedDelegate {
+    func setCurrentSegment(_ segment: CurrentSegment)
+}
+
 @IBDesignable
 public class Segmented: UIView {
     public var segmentOneText = "One"
@@ -15,7 +24,11 @@ public class Segmented: UIView {
     private let recognizerFirst = UITapGestureRecognizer()
     private let recognizerSecond = UITapGestureRecognizer()
     
+    private var delegate: SegmentedDelegate?
+    
     private var segmentBackXAnchors: (first: NSLayoutConstraint, second: NSLayoutConstraint) = (NSLayoutConstraint(), NSLayoutConstraint())
+    // Побывала ли подложка под обоими сегментами
+    private var isFullPath = false
     
     @IBInspectable public var borderColor = UIColor.red.cgColor {
         didSet { self.layer.borderColor = borderColor }
@@ -82,8 +95,8 @@ public class Segmented: UIView {
         setCenterYAnchor(view1: segments.first, view2: self)
         
         // Центрируем подложку относительно 1-го сегмента
-        setFirstX(view1: segmentBack, view2: segments.first)
-        //setCenterXAnchor(view1: segmentBack, view2: segments.first)
+        setSegmentBackCenterXAnchor(segment: .first, firstInteractionWithSegment: true)
+        //setFirstX(view1: segmentBack, view2: segments.first)
         setCenterYAnchor(view1: segmentBack, view2: self)
         
         // Привязываем сегменты к левому и правому краям соответственно
@@ -110,14 +123,17 @@ public class Segmented: UIView {
     
     @objc private func firstSegmentOnClick(_sender: UITapGestureRecognizer) {
         print("first segment clicked")
-        resetSecondX()
-        setFirstX(view1: segmentBack, view2: segments.first)
+        setSegmentBackCenterXAnchor(segment: .first)
     }
     
     @objc private func secondSegmentOnClick(_sender: UITapGestureRecognizer) {
         print("second segment clicked")
-        resetFirstX()
-        setSecondX(view1: segmentBack, view2: segments.second)
+        
+        if !isFullPath {
+            setSegmentBackCenterXAnchor(segment: .second, firstInteractionWithSegment: true)
+            return
+        }
+        setSegmentBackCenterXAnchor(segment: .second)
     }
     
     private func setCenterYAnchor(view1: UIView, view2: UIView) {
@@ -128,25 +144,27 @@ public class Segmented: UIView {
         view1.centerXAnchor.constraint(equalTo: view2.centerXAnchor).isActive = true
     }
     
-    private func resetCenterXAnchor(view1: UIView, view2: UIView) {
-        view1.centerXAnchor.constraint(equalTo: view2.centerXAnchor).isActive = false
-    }
-    
-    private func setFirstX(view1: UIView, view2: UIView) {
-        segmentBackXAnchors.first = view1.centerXAnchor.constraint(equalTo: view2.centerXAnchor)
-        segmentBackXAnchors.first.isActive = true
-    }
-    
-    private func resetFirstX() {
+    private func setSegmentBackCenterXAnchor(segment: CurrentSegment, firstInteractionWithSegment: Bool = false) {
+        if firstInteractionWithSegment {
+            switch segment {
+            case .first:
+                segmentBackXAnchors.first = segmentBack.centerXAnchor.constraint(equalTo: segments.first.centerXAnchor)
+                segmentBackXAnchors.first.isActive = true
+            case .second:
+                segmentBackXAnchors.first.isActive = false
+                segmentBackXAnchors.second = segmentBack.centerXAnchor.constraint(equalTo: segments.second.centerXAnchor)
+                segmentBackXAnchors.second.isActive = true
+                isFullPath = true
+            }
+            return
+        }
+        
+        if segment == .first {
+            segmentBackXAnchors.second.isActive = false
+            segmentBackXAnchors.first.isActive = true
+            return
+        }
         segmentBackXAnchors.first.isActive = false
-    }
-    
-    private func setSecondX(view1: UIView, view2: UIView) {
-        segmentBackXAnchors.second = view1.centerXAnchor.constraint(equalTo: view2.centerXAnchor)
         segmentBackXAnchors.second.isActive = true
-    }
-    
-    private func resetSecondX() {
-        segmentBackXAnchors.second.isActive = false
     }
 }
