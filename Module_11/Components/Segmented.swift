@@ -18,9 +18,6 @@ protocol SegmentedDelegate {
 
 @IBDesignable
 public class Segmented: UIView {
-    public var segmentOneText = "One"
-    public var segmentTwoText = "Two"
-    
     private let recognizerFirst = UITapGestureRecognizer()
     private let recognizerSecond = UITapGestureRecognizer()
     
@@ -33,6 +30,8 @@ public class Segmented: UIView {
     @IBInspectable public var borderColor = UIColor.red.cgColor {
         didSet { self.layer.borderColor = borderColor }
     }
+    
+    
     
     private let labels: (first: UILabel, second: UILabel) = {
         let labels = [UILabel(), UILabel()]
@@ -62,6 +61,7 @@ public class Segmented: UIView {
         return (segments[0], segments[1])
     }()
     
+    // Подложка
     private let segmentBack: UIView = {
         let view = UIView()
         view.backgroundColor = .cyan
@@ -103,10 +103,11 @@ public class Segmented: UIView {
         segments.first.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         segments.second.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         
-
+        // Вешаем слушатель события на 1-й сегмент
         recognizerFirst.addTarget(self, action: #selector(firstSegmentOnClick(_sender:)))
         segments.first.addGestureRecognizer(recognizerFirst)
         
+        // Вешаем слушатель событий на 2-й сегмент
         recognizerSecond.addTarget(self, action: #selector(secondSegmentOnClick(_sender:)))
         segments.second.addGestureRecognizer(recognizerSecond)
     }
@@ -121,19 +122,20 @@ public class Segmented: UIView {
         makeSets()
     }
     
+    // Обработчик нажатия на 1-й сегмент
     @objc private func firstSegmentOnClick(_sender: UITapGestureRecognizer) {
-        print("first segment clicked")
-        setSegmentBackCenterXAnchor(segment: .first)
+        delegate?.setCurrentSegment(.first)
+        self.setSegmentBackCenterXAnchor(segment: .first)
     }
     
+    // Обработчик нажатия на 2-й сегмент
     @objc private func secondSegmentOnClick(_sender: UITapGestureRecognizer) {
-        print("second segment clicked")
-        
-        if !isFullPath {
-            setSegmentBackCenterXAnchor(segment: .second, firstInteractionWithSegment: true)
+        delegate?.setCurrentSegment(.second)
+        if !self.isFullPath {
+            self.setSegmentBackCenterXAnchor(segment: .second, firstInteractionWithSegment: true)
             return
         }
-        setSegmentBackCenterXAnchor(segment: .second)
+        self.setSegmentBackCenterXAnchor(segment: .second)
     }
     
     private func setCenterYAnchor(view1: UIView, view2: UIView) {
@@ -151,20 +153,38 @@ public class Segmented: UIView {
                 segmentBackXAnchors.first = segmentBack.centerXAnchor.constraint(equalTo: segments.first.centerXAnchor)
                 segmentBackXAnchors.first.isActive = true
             case .second:
+                disappearSegmentBack()
                 segmentBackXAnchors.first.isActive = false
                 segmentBackXAnchors.second = segmentBack.centerXAnchor.constraint(equalTo: segments.second.centerXAnchor)
                 segmentBackXAnchors.second.isActive = true
+                appearSegmentBack()
                 isFullPath = true
             }
             return
         }
         
         if segment == .first {
+            disappearSegmentBack()
             segmentBackXAnchors.second.isActive = false
             segmentBackXAnchors.first.isActive = true
+            appearSegmentBack()
             return
         }
+        disappearSegmentBack()
         segmentBackXAnchors.first.isActive = false
         segmentBackXAnchors.second.isActive = true
+        appearSegmentBack()
+    }
+    
+    private func disappearSegmentBack() {
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveLinear, animations: {
+            self.segmentBack.alpha = 0
+        }, completion: nil)
+    }
+    
+    private func appearSegmentBack() {
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveLinear, animations: {
+            self.segmentBack.alpha = 1
+        }, completion: nil)
     }
 }
