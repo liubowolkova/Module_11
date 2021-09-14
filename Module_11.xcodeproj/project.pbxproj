@@ -25,6 +25,7 @@
 		522A3CCE26D3208E00E75C93 /* RoundBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBase.swift; sourceTree = "<group>"; };
 		522A3CD226D320FB00E75C93 /* Fast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fast.swift; sourceTree = "<group>"; };
 		52499D2926D3C0050071E646 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		524FE01026F1534E00073443 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		52C0565D26D575BE00209AAB /* Segmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmented.swift; sourceTree = "<group>"; };
 		52E0627226D38DB000C3D5FD /* RoundClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundClock.swift; sourceTree = "<group>"; };
 		52E7386B26C9ACE9002A4E14 /* Module_11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Module_11.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +61,7 @@
 		52E7386226C9ACE9002A4E14 = {
 			isa = PBXGroup;
 			children = (
+				524FE01026F1534E00073443 /* README.md */,
 				52E7386D26C9ACE9002A4E14 /* Module_11 */,
 				52E7386C26C9ACE9002A4E14 /* Products */,
 			);
