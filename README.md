@@ -8,10 +8,12 @@ Usage @IBDesignable and @IBInspectable
 ``` swift
 @IBDesignable public class Button: UIButton
 ```
-
+![Button](./git_resources/Button.png)
 ### Clock
 ``` swift
 @IBDesignable public class RoundBase: UIView
+```
+``` swift
 @IBDesignable public class RoundClock: RoundBase
 ```
 There is also custom arrow class which has been created with help of CAShapeLayer and UIBezierPath.
@@ -26,8 +28,8 @@ public class Arrow: UIView
 
 ### SegmentedControl
 ``` swift
-@IBDesignable
-public class Segmented: UIView
+@IBDesignable public class Segmented: UIView
 ```
+>There is a bug with displaying setting properties in Interface Builder (for my version XCode and Mac), but functionality works as expected.
 ### Warning
-> Theese components aren't displayed together in Interface Builder
+> Theese components aren't displayed expectedly together in Interface Builder. Add them into view by one.
