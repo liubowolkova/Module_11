@@ -27,13 +27,13 @@ public class Arrow: UIView
 ![Clock with three arrows](./git_resources/clock_three_arrows.png)
 >There is a bug when all arrows are displayed together, but every arrow work amazing by one
 
-![Clock with three arrows bug](./git_resources/clock_three_arrows_bug.png)
+![Clock with three arrows bug](./git_resources/clock_three_arrow_bug.png)
 ### SegmentedControl
 ``` swift
 @IBDesignable public class Segmented: UIView
 ```
 >There is a bug with displaying setting properties in Interface Builder (for my version XCode and Mac), but functionality works as expected.
 
-![Segmented](./git_recources/segmented.png)
+![Segmented](./git_resources/segmented.png)
 ### Warning
 > Theese components aren't displayed expectedly together in Interface Builder. Add them into view by one.
