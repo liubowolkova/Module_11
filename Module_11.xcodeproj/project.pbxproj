@@ -10,11 +10,11 @@
 		522A3CCF26D3208E00E75C93 /* RoundBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A3CCE26D3208E00E75C93 /* RoundBase.swift */; };
 		522A3CD326D320FB00E75C93 /* Fast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A3CD226D320FB00E75C93 /* Fast.swift */; };
 		52499D2A26D3C0050071E646 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52499D2926D3C0050071E646 /* Arrow.swift */; };
-		524FE02926F178C800073443 /* clock_three_arrow_bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE02426F178C800073443 /* clock_three_arrow_bug.png */; };
-		524FE02A26F178C800073443 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE02526F178C800073443 /* Button.png */; };
-		524FE02B26F178C800073443 /* clock_one_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE02626F178C800073443 /* clock_one_arrow.png */; };
-		524FE02C26F178C800073443 /* clock_three_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE02726F178C800073443 /* clock_three_arrows.png */; };
-		524FE02D26F178C800073443 /* segmented.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE02826F178C800073443 /* segmented.png */; };
+		524FE03226F17BCA00073443 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE03126F17BCA00073443 /* Button.png */; };
+		524FE03826F17BF800073443 /* segmented.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE03426F17BF800073443 /* segmented.png */; };
+		524FE03926F17BF800073443 /* clock_three_arrow_bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE03526F17BF800073443 /* clock_three_arrow_bug.png */; };
+		524FE03A26F17BF800073443 /* clock_one_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE03626F17BF800073443 /* clock_one_arrow.png */; };
+		524FE03B26F17BF800073443 /* clock_three_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 524FE03726F17BF800073443 /* clock_three_arrows.png */; };
 		52C0565E26D575BE00209AAB /* Segmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C0565D26D575BE00209AAB /* Segmented.swift */; };
 		52E0627326D38DB000C3D5FD /* RoundClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0627226D38DB000C3D5FD /* RoundClock.swift */; };
 		52E7386F26C9ACE9002A4E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7386E26C9ACE9002A4E14 /* AppDelegate.swift */; };
@@ -31,11 +31,11 @@
 		522A3CD226D320FB00E75C93 /* Fast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fast.swift; sourceTree = "<group>"; };
 		52499D2926D3C0050071E646 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		524FE01026F1534E00073443 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		524FE02426F178C800073443 /* clock_three_arrow_bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_three_arrow_bug.png; path = ../../Desktop/clock_three_arrow_bug.png; sourceTree = "<group>"; };
-		524FE02526F178C800073443 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = ../../Desktop/Button.png; sourceTree = "<group>"; };
-		524FE02626F178C800073443 /* clock_one_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_one_arrow.png; path = ../../Desktop/clock_one_arrow.png; sourceTree = "<group>"; };
-		524FE02726F178C800073443 /* clock_three_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_three_arrows.png; path = ../../Desktop/clock_three_arrows.png; sourceTree = "<group>"; };
-		524FE02826F178C800073443 /* segmented.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segmented.png; path = ../../Desktop/segmented.png; sourceTree = "<group>"; };
+		524FE03126F17BCA00073443 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		524FE03426F17BF800073443 /* segmented.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segmented.png; sourceTree = "<group>"; };
+		524FE03526F17BF800073443 /* clock_three_arrow_bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_three_arrow_bug.png; sourceTree = "<group>"; };
+		524FE03626F17BF800073443 /* clock_one_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_one_arrow.png; sourceTree = "<group>"; };
+		524FE03726F17BF800073443 /* clock_three_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_three_arrows.png; sourceTree = "<group>"; };
 		52C0565D26D575BE00209AAB /* Segmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmented.swift; sourceTree = "<group>"; };
 		52E0627226D38DB000C3D5FD /* RoundClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundClock.swift; sourceTree = "<group>"; };
 		52E7386B26C9ACE9002A4E14 /* Module_11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Module_11.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,22 +68,22 @@
 			path = MyLibs;
 			sourceTree = "<group>";
 		};
-		524FE02326F1757F00073443 /* git_resources */ = {
+		524FE03026F17A5200073443 /* git_resources */ = {
 			isa = PBXGroup;
 			children = (
-				524FE02526F178C800073443 /* Button.png */,
-				524FE02626F178C800073443 /* clock_one_arrow.png */,
-				524FE02426F178C800073443 /* clock_three_arrow_bug.png */,
-				524FE02726F178C800073443 /* clock_three_arrows.png */,
-				524FE02826F178C800073443 /* segmented.png */,
+				524FE03126F17BCA00073443 /* Button.png */,
+				524FE03626F17BF800073443 /* clock_one_arrow.png */,
+				524FE03526F17BF800073443 /* clock_three_arrow_bug.png */,
+				524FE03726F17BF800073443 /* clock_three_arrows.png */,
+				524FE03426F17BF800073443 /* segmented.png */,
 			);
-			name = git_resources;
+			path = git_resources;
 			sourceTree = "<group>";
 		};
 		52E7386226C9ACE9002A4E14 = {
 			isa = PBXGroup;
 			children = (
-				524FE02326F1757F00073443 /* git_resources */,
+				524FE03026F17A5200073443 /* git_resources */,
 				524FE01026F1534E00073443 /* README.md */,
 				52E7386D26C9ACE9002A4E14 /* Module_11 */,
 				52E7386C26C9ACE9002A4E14 /* Products */,
@@ -183,13 +183,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				524FE02C26F178C800073443 /* clock_three_arrows.png in Resources */,
-				524FE02A26F178C800073443 /* Button.png in Resources */,
 				52E7387B26C9ACEC002A4E14 /* LaunchScreen.storyboard in Resources */,
+				524FE03B26F17BF800073443 /* clock_three_arrows.png in Resources */,
+				524FE03226F17BCA00073443 /* Button.png in Resources */,
+				524FE03926F17BF800073443 /* clock_three_arrow_bug.png in Resources */,
 				52E7387826C9ACEC002A4E14 /* Assets.xcassets in Resources */,
-				524FE02D26F178C800073443 /* segmented.png in Resources */,
-				524FE02B26F178C800073443 /* clock_one_arrow.png in Resources */,
-				524FE02926F178C800073443 /* clock_three_arrow_bug.png in Resources */,
+				524FE03A26F17BF800073443 /* clock_one_arrow.png in Resources */,
+				524FE03826F17BF800073443 /* segmented.png in Resources */,
 				52E7387626C9ACE9002A4E14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
