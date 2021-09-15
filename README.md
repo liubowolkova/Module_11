@@ -1,7 +1,7 @@
 #  Skillbox iOS - 1 level - module 11 
 
-## Target - creation custom UIView-components
-Usage @IBDesignable and @IBInspectable
+## Target - creation custom `UIView`-components
+Usage `@IBDesignable` and `@IBInspectable`
 
 ## Custom components
 ### Button
@@ -16,11 +16,11 @@ Usage @IBDesignable and @IBInspectable
 ``` swift
 @IBDesignable public class RoundClock: RoundBase
 ```
-There is also custom arrow class which has been created with help of CAShapeLayer and UIBezierPath.
+There is also custom arrow class which has been created with help of `CAShapeLayer` and `UIBezierPath`.
 ``` swift
 public class Arrow: UIView
 ```
->Clock view should has equal width and height for being round
+>Clock view should has **equal width** and **height** for being round
 #### One arrow
 ![Clock with one arrow](./git_resources/clock_one_arrow.png)
 #### Three arrows
@@ -32,8 +32,8 @@ public class Arrow: UIView
 ``` swift
 @IBDesignable public class Segmented: UIView
 ```
->There is a bug with displaying setting properties in Interface Builder (for my version XCode and Mac), but functionality works as expected.
+>There is a bug with displaying setting properties in Interface Builder (for my version XCode and Mac), but **functionality works as expected**.
 
 ![Segmented](./git_resources/segmented.png)
 ### Warning
-> Theese components aren't displayed expectedly together in Interface Builder. Add them into view by one.
+> Theese components aren't displayed expectedly together in Interface Builder. **Add** them into view **by one**.
